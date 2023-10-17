@@ -38,6 +38,6 @@ However, for this I've made the below assumptions to implement the task given:
 
 1. Clone or download the repository.
 
-2. Open `index.html` in your preferred browser.
+2. Open `template.html` in your preferred browser.
 
 That's it! Start typing a URL and see the checker in action.
