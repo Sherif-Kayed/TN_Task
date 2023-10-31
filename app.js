@@ -24,6 +24,9 @@ let latestRequestId = null;
 const handleInputChange = _.debounce(async () => {
     const url = inputElem.value;
 
+    // Clear the message as soon as the user starts typing a new URL
+    messageElem.textContent = "";
+
     if (!isValidURL(url)) {
         messageElem.textContent = "Invalid URL format.";
         return;
@@ -38,7 +41,10 @@ const handleInputChange = _.debounce(async () => {
 
     // Only update the UI if the current request Id is equal to the latest one
     if (latestRequestId === currentRequestId) {
-        if (exists) {
+        // Check the URL format again before updating the message
+        if (!isValidURL(url)) {
+            messageElem.textContent = "Invalid URL format.";
+        } else if (exists) {
             messageElem.textContent = `URL exists and it is a ${type}.`;
         } else {
             messageElem.textContent = "URL does not exist.";
